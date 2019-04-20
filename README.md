@@ -6,10 +6,10 @@ Parsing and compile pattern matching expression into D code in Compile Time.
 
 ## Features
 
-[*] ADT Pattern -- you can use pattern matching for ADT(you have to use [DADT](https://github.com/alphaKAI/dadt together))
-[] List(Array) Pattern -- WIP
-[] Range Pattern -- WIP
-[] Tuple Pattern -- WIP
+[x] ADT Pattern -- you can use pattern matching for ADT(you have to use [DADT](https://github.com/alphaKAI/dadt together))  
+[ ] List(Array) Pattern -- WIP  
+[ ] Range Pattern -- WIP  
+[ ] Tuple Pattern -- WIP  
 
 
 ## Example
