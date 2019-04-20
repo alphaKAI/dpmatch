@@ -1,0 +1,13 @@
+{
+	"name": "dpmatch",
+	"authors": [
+		"Akihiro Shoji"
+	],
+	"description": "Pattern Matching for D",
+	"copyright": "Copyright (C) 2018, Akihiro Shoji",
+	"license": "MIT",
+	"dependencies": {
+		"pegged"		: "*"
+	},
+	"targetType": "sourceLibrary"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "example",
+	"authors": [
+		"Akihiro Shoji"
+	],
+	"description": "Example of dpmatch",
+	"copyright": "Copyright (C) 2018, Akihiro Shoji",
+	"license": "MIT",
+	"dependencies": {
+		"dpmatch": {
+			"path": "../"
+		},
+		"dadt": "0.0.52"
+	}
+}
