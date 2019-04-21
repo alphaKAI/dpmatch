@@ -1,7 +1,7 @@
 {
 	"fileVersion": 1,
 	"versions": {
-		"dadt": "0.0.52",
+		"dadt": "0.0.6",
 		"dpmatch": {"path":"../"},
 		"pegged": "0.4.4"
 	}
