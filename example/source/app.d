@@ -42,6 +42,12 @@ void opt_may(F, T = Parameters!F[0])(Option!T v_opt, F f)
   }));
 }
 
+mixin(genCodeFromSource(`
+type Hoge =
+| A of int
+| B of string
+`));
+
 void main() {
   writeln("opt_default(some(10), 0): ", opt_default(some(10), 0));
   writeln("opt_default(none!int, 0): ", opt_default(none!int, 0));
@@ -69,4 +75,16 @@ void main() {
 
   opt_ans = (i2 == 0 ? none!int : some(i2)).opt_map((int d) => i1 / d);
   writeln(show_Option(opt_ans)); // Some!(int)(5)
+
+  Hoge h = a(123);
+  mixin(patternMatchADT!(h, HogeType, q{
+    | A (a) -> <{ writeln("a : ", a); }>
+    | B (b) -> <{ writeln("b : ", b); }>
+  }));
+
+  h = b("str");
+  mixin(patternMatchADT!(h, HogeType, q{
+    | A (a) -> <{ writeln("a : ", a); }>
+    | B (b) -> <{ writeln("b : ", b); }>
+  }));
 }

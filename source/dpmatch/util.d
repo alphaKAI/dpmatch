@@ -1,6 +1,7 @@
 module dpmatch.util;
 import std.string;
 import std.algorithm;
+import std.traits;
 
 string patternReplaceWithTable(string code, string[string] table) {
   string[] codes;
@@ -73,4 +74,12 @@ string[] getOriginalMembers(T)() {
   }
 
   return ret;
+}
+
+bool isTemplate(T)() {
+  static if (is(TemplateOf!T == void)) {
+    return false;
+  } else {
+    return true;
+  }
 }

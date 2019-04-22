@@ -265,15 +265,21 @@ string compileForDADT(DADTTypeType, alias __INTERNAL_PATTERN_MATCH_ARGUMENT)(
     VariantPatternName vpn = vp.vp_name;
 
     string constructor_name = vpn.getNameStr();
-    string[] constructor_args;
 
-    foreach (arg; TemplateArgsOf!(typeof(__INTERNAL_PATTERN_MATCH_ARGUMENT))) {
-      constructor_args ~= arg.stringof;
+    static if (isTemplate!(typeof(__INTERNAL_PATTERN_MATCH_ARGUMENT))) {
+      string[] constructor_args;
+
+      foreach (arg; TemplateArgsOf!(typeof(__INTERNAL_PATTERN_MATCH_ARGUMENT))) {
+        constructor_args ~= arg.stringof;
+      }
+
+      const constructor_str = "%s!(%s)".format(constructor_name, constructor_args.join(", "));
+    } else {
+      const constructor_str = constructor_name;
     }
 
     string[] handler_args = bindings.bindingsStr().map!(arg => "\"%s\"".format(arg)).array;
     string handler_body = elem.handler.code;
-    const constructor_str = "%s!(%s)".format(constructor_name, constructor_args.join(", "));
 
     elems_code ~= `
   if ((cast(#{constructor_str}#)#{INTERNAL_PATTERN_MATCH_ARGUMENT_NAME}#) !is null) {
